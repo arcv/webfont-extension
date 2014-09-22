@@ -46,10 +46,12 @@
  	.side-nav {
  		max-height: 360px;
  		overflow: auto;
+    display: block !important;
 
  		li {
  			width: inherit !important;
  			float: none;
+      text-align: left !important;
 
  			a {
  				cursor: pointer;
@@ -69,5 +71,3 @@
  	}
 
  }
-
-Acked-by: M. Oguz <mustafaoguz@gmx.com>
