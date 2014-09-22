@@ -7,6 +7,7 @@
   "background": {
     "scripts": ["background.js"]
   },
+  "developer": { "name": "M. Oguz" },
 
   "web_accessible_resources": [
     "template.html",
@@ -15,11 +16,13 @@
 
   "permissions": ["tabs", "http://*/*"],
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "32.png",
     "default_title": "Web Fonts"
   },
-  "icons": { "16": "icon.png",
-             "48": "icon48.png"},
+  "icons": { "32": "32.png",
+             "48": "48.png",
+             "64": "64.png",
+             "128": "128.png"},
 
   "content_scripts": [{
     "matches": ["http://*/*"],
