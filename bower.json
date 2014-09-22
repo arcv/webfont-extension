@@ -1,0 +1,14 @@
+{
+  "name": "opera-webfont-extension",
+  "version": "1.0.0",
+  "authors": [
+    "M. Oguz <mustafaoguz@gmx.com>"
+  ],
+  "description": "Preview Google Web Fonts easily",
+  "main": "popup.html",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "foundation": "~5.4.4"
+  }
+}

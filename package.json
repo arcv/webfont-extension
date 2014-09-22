@@ -1,0 +1,13 @@
+{
+  "name": "opera-webfont-extension",
+  "version": "1.0.0",
+  "description": "Preview Google Web Fonts easily",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-coffeee": "^2.2.0",
+    "gulp-sass": "*"
+  },
+  "author": "M. Oguz <mustafaoguz@gmx.com>",
+  "license": "MIT"
+}

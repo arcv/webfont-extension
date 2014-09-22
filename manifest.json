@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "Web Fonts",
+  "description": "Preview Google Web Fonts in Opera",
+  "version": "1.0",
+  "homepage_url": "http://github.com/arcv/webfont-extension",
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "web_accessible_resources": [
+    "template.html",
+    "fontcache.json"
+  ],
+
+  "permissions": ["tabs", "http://*/*"],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title": "Web Fonts"
+  },
+  "icons": { "16": "icon.png",
+             "48": "icon48.png"},
+
+  "content_scripts": [{
+    "matches": ["http://*/*"],
+    "js": ["/compile/jquery.min.js","inject.js"],
+    "css": ["/compile/style.css"]
+  }]
+}

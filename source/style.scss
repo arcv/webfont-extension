@@ -1,0 +1,70 @@
+ $include-html-global-classes: false;
+ $include-html-form-classes: false;
+ $include-html-button-classes: false;
+
+ @import "./bower_components/foundation/scss/foundation/components/forms";
+ @import "./bower_components/foundation/scss/foundation/components/side-nav";
+
+ .extension-webfont {
+	
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
+	width: 300px;
+	padding: 1rem;
+	box-shadow: rgba(#000, .1) 0 0 1rem;
+ 	font-family: sans-serif;
+ 	outline: 1px auto;
+ 	background: rgba(#fff, 1);
+ 	opacity: .1;
+ 	transition: .2s all;
+
+ 	& * {
+ 		-webkit-font-smoothing: antialiased;
+ 	}
+
+ 	&:hover {
+ 		opacity: 1;
+ 	}
+
+ 	[data-more] {
+ 		padding: 0 1rem;
+ 	}
+	
+	.load-more-button {
+		@include button ($padding: rem-calc(8));
+		border-radius: 2px;
+		display: inline-block;
+		width: 100%;
+	}
+
+ 	input {
+ 		@include form-element;
+ 	}
+
+ 	.side-nav {
+ 		max-height: 360px;
+ 		overflow: auto;
+
+ 		li {
+ 			width: inherit !important;
+ 			float: none;
+
+ 			a {
+ 				cursor: pointer;
+ 				text-decoration: none;
+ 				color: rgba(#000, .6);
+ 				font-size: 1rem;
+
+ 				&:hover {
+ 					color: inherit;
+ 				}
+
+ 				&:active {
+ 					outline: 1px auto;
+ 				}
+ 			}
+ 		}
+ 	}
+
+ }
