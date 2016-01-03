@@ -17,9 +17,41 @@ window.webfontExtention.insert_font = function() {
 		// return (key + window.webfontExtention.offset < window.webfontExtention.limit);
 	})
 
-	$(".extension-webfont .side-nav li[data-more]").remove()
-	var button = $("<button/>").addClass("tiny load-more-button").text("Load More Fonts")
-	$("<li/>").attr("data-more", "").html(button).appendTo(".extension-webfont .side-nav")
+	// $(".extension-webfont .side-nav li[data-more]").remove()
+	// var button = $("<button/>").addClass("load-more-button").text("Load More Fonts")
+	// $("<li/>").attr("data-more", "").html(button).appendTo(".extension-webfont .side-nav")
+}
+
+window.webfontExtention.filter_font = function(filterString) {
+	$(".extension-webfont .side-nav").empty();
+	var tempFontList = []
+	var continueToLoad = true;
+
+	$.each(window.webfontExtention.fonts.items, function(key, item) {
+		var searchReg = new RegExp(filterString, 'gi');
+
+		if(item.family.search(searchReg) != -1 && continueToLoad == true) {
+			tempFontList.push(item);
+
+			/// Disable loading
+			if(tempFontList.length > 10)
+				continueToLoad = false;
+		}
+	})
+
+	/// Show tempFontList
+	$.each(tempFontList, function(key, item) {
+
+		if (key >= window.webfontExtention.offset && key < window.webfontExtention.limit) {
+			var li = $("<li/>")
+			var a = $("<a/>").attr("data-font-id", key).text(item.family).attr({
+				style: "font-family: '" + item.family + "'"
+			})
+			$(".extension-webfont .side-nav").append(li.append(a))
+			set_style(item);
+		}
+		// return (key + window.webfontExtention.offset < window.webfontExtention.limit);
+	})
 }
 
 function set_style(font) {
@@ -30,7 +62,7 @@ function set_style(font) {
 
 function insert_css(fontFamily) {
 	var selector = $(".extension-webfont-selector").val()
-	var str = "%s {font-family: '%s' !important}"
+	var str = "%s {font-family: '%s' !important; font-weight: 300 !important}"
 	str = str.replace("%s", selector).replace("%s", fontFamily)
 
 	$("[name='extension-webfont-css']").text(str)
@@ -44,9 +76,17 @@ $(document).on("click", "[data-font-id]", function(ev) {
 $(document).on("click", "[data-more]", function(ev) {
 	window.webfontExtention.limit += 20;
 	window.webfontExtention.offset += 20;
-	window.webfontExtention.insert_font()
+	window.webfontExtention.insert_font();
 })
 
+$(document).on("keyup", ".extension-webfont-filter", function(ev) {
+	var string = $(".extension-webfont-filter").val();
+	if (string.length == 0) {
+		window.webfontExtention.insert_font();
+	} else {
+		window.webfontExtention.filter_font(string);
+	}
+})
 
 /**
  * Handler

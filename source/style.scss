@@ -1,73 +1,89 @@
- $include-html-global-classes: false;
- $include-html-form-classes: false;
- $include-html-button-classes: false;
+.extension-webfont {
 
- @import "./bower_components/foundation/scss/foundation/components/forms";
- @import "./bower_components/foundation/scss/foundation/components/side-nav";
-
- .extension-webfont {
-	
 	position: fixed;
 	right: 1rem;
 	top: 1rem;
 	width: 300px;
 	padding: 1rem;
 	box-shadow: rgba(#000, .1) 0 0 1rem;
- 	font-family: sans-serif;
- 	outline: 1px auto;
- 	background: rgba(#fff, 1);
- 	opacity: .1;
- 	transition: .2s all;
-  z-index: 999999;
+	font-family: sans-serif;
+	outline: 1px auto;
+	background: rgba(#fff, 1);
+	// opacity: .1;
+	transition: .2s all;
+	z-index: 999999;
 
- 	& * {
- 		-webkit-font-smoothing: antialiased;
- 	}
+	& * {
+		-webkit-font-smoothing: antialiased;
+	}
 
- 	&:hover {
- 		opacity: 1;
- 	}
+	&:hover {
+		opacity: 1;
+	}
 
- 	[data-more] {
- 		padding: 0 1rem;
- 	}
-	
+	[data-more] {
+		padding: 0 1rem;
+	}
+
 	.load-more-button {
-		@include button ($padding: rem-calc(8));
 		border-radius: 2px;
 		display: inline-block;
 		width: 100%;
+		padding: 5px;
+		border: 1px solid rgba(#000, .1);
+		font-size: 1.1rem;
+		cursor: pointer;
+		background: #3A74E6;
+		color: #fff;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
 	}
 
- 	input {
- 		@include form-element;
- 	}
+	input {
+		padding: 5px;
+		display: block;
+		border-radius: 2px;
+		width: 100%;
+		border: 1px solid #aaa;
+		font-size: 1rem;
+	}
 
- 	.side-nav {
- 		max-height: 360px;
- 		overflow: auto;
-    display: block !important;
+	.side-nav {
+		max-height: 20rem;
+		overflow: auto;
+		display: block !important;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		background: #fafafa;
 
- 		li {
- 			width: inherit !important;
- 			float: none;
-      text-align: left !important;
+		li {
+			margin-bottom: .2rem;
+			width: inherit !important;
+			float: none;
+			text-align: left !important;
+			border-bottom: 1px solid #fff;
 
- 			a {
- 				cursor: pointer;
- 				text-decoration: none;
- 				color: rgba(#000, .6);
- 				font-size: 1rem;
+			a {
+				cursor: pointer;
+				text-decoration: none;
+				color: rgba(#000, .6);
+				font-size: 1rem;
+				border-radius: 2px;
+				background: #fafafa;
+				display: block;
+				padding: 5px 10px;
+				margin: .3rem;
 
- 				&:hover {
- 					color: inherit;
- 				}
+				&:hover {
+					color: inherit;
+				}
 
- 				&:active {
- 					outline: 1px auto;
- 				}
- 			}
- 		}
- 	}
+				&:active {
+					outline: 1px auto;
+				}
+			}
+		}
+	}
 
- }
+}

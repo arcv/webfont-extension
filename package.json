@@ -5,7 +5,6 @@
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.8.8",
-    "gulp-coffeee": "^2.2.0",
     "gulp-sass": "*"
   },
   "author": "M. Oguz <mustafaoguz@gmx.com>",
