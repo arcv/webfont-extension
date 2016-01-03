@@ -1,5 +1,6 @@
 window.webfontExtention = {};
 window.webfontExtention.fonts = {};
+window.webfontExtention.tempFontList = [];
 window.webfontExtention.limit = 20;
 window.webfontExtention.offset = 0;
 
@@ -24,27 +25,27 @@ window.webfontExtention.insert_font = function() {
 
 window.webfontExtention.filter_font = function(filterString) {
 	$(".extension-webfont .side-nav").empty();
-	var tempFontList = []
 	var continueToLoad = true;
+	window.webfontExtention.tempFontList = [];
 
 	$.each(window.webfontExtention.fonts.items, function(key, item) {
 		var searchReg = new RegExp(filterString, 'gi');
 
 		if(item.family.search(searchReg) != -1 && continueToLoad == true) {
-			tempFontList.push(item);
+			window.webfontExtention.tempFontList.push(item);
 
 			/// Disable loading
-			if(tempFontList.length > 10)
+			if(window.webfontExtention.tempFontList.length > 10)
 				continueToLoad = false;
 		}
 	})
 
 	/// Show tempFontList
-	$.each(tempFontList, function(key, item) {
+	$.each(window.webfontExtention.tempFontList, function(key, item) {
 
 		if (key >= window.webfontExtention.offset && key < window.webfontExtention.limit) {
 			var li = $("<li/>")
-			var a = $("<a/>").attr("data-font-id", key).text(item.family).attr({
+			var a = $("<a/>").attr({"data-font-id": key, "data-filter-result": true}).text(item.family).attr({
 				style: "font-family: '" + item.family + "'"
 			})
 			$(".extension-webfont .side-nav").append(li.append(a))
@@ -69,7 +70,15 @@ function insert_css(fontFamily) {
 }
 
 $(document).on("click", "[data-font-id]", function(ev) {
-	var font = window.webfontExtention.fonts.items[$(this).data('font-id')]
+
+	var fontList = {};
+
+	if($(this).data("filter-result") == true) {
+		console.log(window.webfontExtention.tempFontList)
+		var font = window.webfontExtention.tempFontList[$(this).data('font-id')]
+	} else {
+		var font = window.webfontExtention.fonts.items[$(this).data('font-id')]
+	}
 	insert_css(font.family)
 })
 

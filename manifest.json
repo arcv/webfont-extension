@@ -1,5 +1,5 @@
 {
-  "manifest_version": 4,
+  "manifest_version": 2,
   "name": "Web Fonts",
   "description": "Preview Google Web Fonts in Opera",
   "version": "1.1.6",
